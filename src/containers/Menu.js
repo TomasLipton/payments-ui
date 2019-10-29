@@ -9,7 +9,7 @@ const mapStateToProps = ({ cart }) => ({
     count: cart.items.length,
     items: uniqBy(cart.items, o => o.id),
 });
-console.log(cartActions);
+
 const mapDispatchToProps = dispatch => ({
     ...bindActionCreators(cartActions, dispatch),
 });

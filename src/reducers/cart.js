@@ -1,30 +1,5 @@
 const initialState = {
-    items: [
-        {
-            "id": 17,
-            "title": "Метро 2035",
-            "author": "Дмитрий Глуховский",
-            "image": "https://cv9.litres.ru/sbc/13698392_cover_185-elektronnaya-kniga-dmitriy-gluhovskiy-metro-2035.jpg",
-            "price": 837,
-            "rating": 4
-        },
-        {
-            "id": 17,
-            "title": "Метро 2035",
-            "author": "Дмитрий Глуховский",
-            "image": "https://cv9.litres.ru/sbc/13698392_cover_185-elektronnaya-kniga-dmitriy-gluhovskiy-metro-2035.jpg",
-            "price": 837,
-            "rating": 4
-        },
-        {
-            "id": 17,
-            "title": "Метро 2035",
-            "author": "Дмитрий Глуховский",
-            "image": "https://cv9.litres.ru/sbc/13698392_cover_185-elektronnaya-kniga-dmitriy-gluhovskiy-metro-2035.jpg",
-            "price": 837,
-            "rating": 4
-        }
-    ]
+    items: []
 };
 
 export default (state = initialState, action) => {
