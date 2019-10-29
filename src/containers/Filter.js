@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import Filter from "../components/Filter/Filter";
 
-const mapStateToProps = ({books}) => ({
-    filterBy: books.filterBy,
+const mapStateToProps = ({filter}) => ({
+    filterBy: filter.filterBy,
 });
 
 const mapDispatchToProps = dispatch => ({
