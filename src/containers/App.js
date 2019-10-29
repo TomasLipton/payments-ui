@@ -18,13 +18,12 @@ const sortBy = (books, filterBy) => {
 };
 
 const filterBooks = (books, searchQuery) => {
-        console.log(searchQuery);
-        return books.filter(
-            o =>
-                o.title.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
-                o.author.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0,
-        )
-    }
+    return books.filter(
+        (o) =>
+            o.attributes.title.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
+            (o.attributes.about && o.attributes.about.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0),
+    )
+}
 
 
 const searchBooks = (books, filterBy, searchQuery) => {

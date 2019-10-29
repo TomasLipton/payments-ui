@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import 'semantic-ui-css/semantic.min.css'
-import {Card, Container} from 'semantic-ui-react'
+import {Card, Container, Header} from 'semantic-ui-react'
 
 import '../app.css'
 import Filter from "../containers/Filter";
@@ -17,18 +17,41 @@ class App extends Component {
     }
 
     render() {
-        const {books, isReady, setFilter} = this.props;
+        const {books, isReady} = this.props;
         return (
             <Container>
                 <Menu/>
                 <Filter/>
-                <Card.Group itemsPerRow={4}>
+                <Header as='h2' dividing>
+                    Услуги
+                </Header>
+                <Card.Group doubling itemsPerRow={4}>
                     {
                         !isReady
                             ? 'loading....'
-                            : books.map(book => (
-                                <BookCard key={book.id} {...book} />
-                            ))
+                            : books.map(book => {
+                                if (book.attributes.category === 'psy') {
+                                    return <BookCard key={book.id} {...book.attributes} />;
+                                } else {
+                                    return [];
+                                }
+                            })
+                    }
+                </Card.Group>
+                <Header as='h2' dividing>
+                    Обучение
+                </Header>
+                <Card.Group doubling itemsPerRow={4}>
+                    {
+                        !isReady
+                            ? 'loading....'
+                            : books.map(book => {
+                                if (book.attributes.category !== 'psy') {
+                                    return <BookCard key={book.id} {...book.attributes} />;
+                                } else {
+                                    return [];
+                                }
+                            })
                     }
                 </Card.Group>
             </Container>
