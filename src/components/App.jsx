@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import axios from "axios";
 import 'semantic-ui-css/semantic.min.css'
 import {Card, Container} from 'semantic-ui-react'
-import MenuComponent from "./Menu/Menu";
-import BookCard from "./BookCard/BookCard";
 
 import '../app.css'
 import Filter from "../containers/Filter";
+import Menu from "../containers/Menu";
+import BookCard from "../containers/BookCard";
 
 class App extends Component {
     componentDidMount() {
@@ -20,7 +20,7 @@ class App extends Component {
         const {books, isReady, setFilter} = this.props;
         return (
             <Container>
-                <MenuComponent/>
+                <Menu/>
                 <Filter/>
                 <Card.Group itemsPerRow={4}>
                     {

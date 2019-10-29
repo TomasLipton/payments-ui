@@ -1,36 +1,46 @@
-import React, {Component} from 'react';
+import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
-import {Menu} from 'semantic-ui-react'
+import {Button, Image, List, Menu, Popup} from 'semantic-ui-react'
 
+const CartComponent = ({ title, id, image, removeFromCart }) => (
+    <List selection divided verticalAlign="middle">
+        <List.Item>
+            <List.Content floated="right">
+                <Button onClick={removeFromCart.bind(this, id)} color="red">
+                    Удалить
+                </Button>
+            </List.Content>
+            <Image avatar src={image} />
+            <List.Content>{title}</List.Content>
+        </List.Item>
+    </List>
+);
 
-class MenuComponent extends Component {
-    render() {
-        return (
+const MenuComponent = (prop) => {
+    const { totalPrice, count, items } = prop;
+    return (
             <Menu>
-                <Menu.Item
-                    name='browse'
-                    onClick={this.handleItemClick}
-                >
-                    Store
-                </Menu.Item>
+        <Menu.Item name="browse">Магазин книг</Menu.Item>
 
-                <Menu.Menu position='right'>
-                    <Menu.Item
-                        name='signup'
-                        onClick={this.handleItemClick}
-                    >
-                        Total
-                    </Menu.Item>
+        <Menu.Menu position="right">
+            <Menu.Item name="signup">
+                Итого: &nbsp; <b>{totalPrice}</b>&nbsp;руб.
+            </Menu.Item>
 
-                    <Menu.Item
-                        name='help'
-                        onClick={this.handleItemClick}
-                    >
-                        Cart
+            <Popup
+                trigger={
+                    <Menu.Item name="help">
+                        Корзина (<b>{count}</b>)
                     </Menu.Item>
-                </Menu.Menu>
-            </Menu>
-        );
-    }
-}
+                }
+                content={items.map(book => (
+                    <CartComponent {...book}  removeFromCart={prop.removeFromCart} />
+                ))}
+                on="click"
+                hideOnScroll
+            />
+        </Menu.Menu>
+    </Menu>
+    );
+};
 export default MenuComponent;
