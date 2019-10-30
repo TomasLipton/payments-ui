@@ -6,7 +6,7 @@ const BookCard = book => {
     return (
         <Card>
             <div className="card-image">
-                <Image src={picture} />
+                <Image rounded src={picture} />
             </div>
             <Card.Content>
                 <Card.Header>{title}</Card.Header>

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
-import {Header, Icon, Menu, Popup, Segment} from 'semantic-ui-react'
+import {Header, Icon, List, Menu, Popup, Segment} from 'semantic-ui-react'
 import Cart from "../Cart/Cart";
 
 const MenuComponent = (prop) => {
@@ -21,6 +21,8 @@ const MenuComponent = (prop) => {
                 </Menu.Item>
 
                 <Popup
+                    wide
+                    position="bottom right"
                     trigger={
                         <Menu.Item name="help">
                             Корзина (<b>{count}</b>)
@@ -28,7 +30,9 @@ const MenuComponent = (prop) => {
                     }
                     content={
                         renderItems.length
-                            ? renderItems
+                            ? <List divided verticalAlign='middle'>
+                                {renderItems}
+                            </List>
                             : <Segment placeholder>
                                 <Header icon>
                                     <Icon name='tasks'/>
