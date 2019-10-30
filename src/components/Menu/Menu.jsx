@@ -1,7 +1,8 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
-import {Header, Icon, List, Menu, Popup, Segment} from 'semantic-ui-react'
+import {Button, Header, Icon, List, Menu, Popup, Segment} from 'semantic-ui-react'
 import Cart from "../Cart/Cart";
+import {Link} from "react-router-dom";
 
 const MenuComponent = (prop) => {
     const {totalPrice, count, items} = prop;
@@ -13,7 +14,7 @@ const MenuComponent = (prop) => {
 
     return (
         <Menu stackable>
-            <Menu.Item name="browse">Магазин книг</Menu.Item>
+            <Menu.Item name="browse" as={Link} to={'/'}>Магазин книг</Menu.Item>
 
             <Menu.Menu position="right">
                 <Menu.Item name="signup">
@@ -30,9 +31,12 @@ const MenuComponent = (prop) => {
                     }
                     content={
                         renderItems.length
-                            ? <List divided verticalAlign='middle'>
-                                {renderItems}
-                            </List>
+                            ? <React.Fragment>
+                                <List divided verticalAlign='middle'>
+                                    {renderItems}
+                                </List>
+                                <Button fluid as={Link} to='/checkout'>Продолжить <Icon name={'angle double right'}/></Button>
+                            </React.Fragment>
                             : <Segment placeholder>
                                 <Header icon>
                                     <Icon name='tasks'/>
