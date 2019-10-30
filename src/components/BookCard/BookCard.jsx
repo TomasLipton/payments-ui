@@ -1,12 +1,13 @@
 import React from 'react';
-import { Card, Image, Icon, Button } from 'semantic-ui-react';
+import {Card, Image, Icon, Button} from 'semantic-ui-react';
+import {declOfNum} from "../../helpers";
 
 const BookCard = book => {
-    const { title, author, price, picture, addToCart, addedCount } = book;
+    const {title, author, price, picture, addToCart, addedCount} = book;
     return (
         <Card>
             <div className="card-image">
-                <Image rounded src={picture} />
+                <Image rounded src={picture}/>
             </div>
             <Card.Content>
                 <Card.Header>{title}</Card.Header>
@@ -16,12 +17,15 @@ const BookCard = book => {
             </Card.Content>
             <Card.Content extra>
                 <span>
-                    <Icon name="rub" />
+                    <Icon name="rub"/>
                     {price}
                 </span>
             </Card.Content>
-            <Button onClick={addToCart.bind(this, book)}>
-                Добавить в корзину {addedCount > 0 && `(${addedCount})`}
+            <Button onClick={addToCart.bind(this, book)}>{
+                addedCount > 0
+                    ? `${declOfNum(addedCount, ['Добавлен', 'Добавлено', 'Добавлено'])} ${addedCount} ${declOfNum(addedCount, ['час', 'часа', 'часов'])}`
+                    : "Добавить в корзину"
+            }
             </Button>
         </Card>
     );

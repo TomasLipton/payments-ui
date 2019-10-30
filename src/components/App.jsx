@@ -3,7 +3,7 @@ import axios from "axios";
 import 'semantic-ui-css/semantic.min.css'
 import {Card, Container, Header} from 'semantic-ui-react'
 
-import '../app.css'
+import './app.css'
 import Filter from "../containers/Filter";
 import Menu from "../containers/Menu";
 import BookCard from "../containers/BookCard";

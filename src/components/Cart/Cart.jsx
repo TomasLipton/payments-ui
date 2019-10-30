@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Image, Label, List} from 'semantic-ui-react';
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 
-const Cart = ({title, id, picture, removeFromCart}) => (
+const Cart = ({title, id, picture, removeFromCart, count, price}) => (
     <List.Item>
         <List.Content floated="right">
             <Button onClick={removeFromCart.bind(this, id)} icon color="red">
@@ -14,11 +14,11 @@ const Cart = ({title, id, picture, removeFromCart}) => (
             <List.Header>{title}</List.Header>
             <Label size={'small'}>
                 Часов:
-                <Label.Detail>214</Label.Detail>
+                <Label.Detail>{count}</Label.Detail>
             </Label>
             <Label size={'small'}>
                 BYN:
-                <Label.Detail>214</Label.Detail>
+                <Label.Detail>{count * price}</Label.Detail>
             </Label>
         </List.Content>
     </List.Item>

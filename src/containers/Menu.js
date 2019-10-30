@@ -5,26 +5,20 @@ import uniqBy from 'lodash/uniqBy';
 import MenuComponent from "../components/Menu/Menu";
 
 const formatItems = (cart, books) => {
-    let items;
+    const items = uniqBy(cart.items, o => o.id);
 
-    items = uniqBy(cart.items, o => o.id);
-
-    console.log(items)
-
-    // console.log(items.map((i, index, items) => {
-    //     return {
-    //         ...items,
-    //         test: 123
-    //     }
-    //
-    //         books.items.reduce(
-    //             (count, book) =>
-    //             , 0
-    //         )
-    //     }
-    // ));
-
-    return items;
+    return items.map((element, index, items) => {
+            return {
+                ...element,
+                count: cart.items.reduce(
+                    (count, book) => {
+                        return count + (book.id === element.id ? 1 : 0)
+                    }
+                    , 0
+                )
+            };
+        }
+    );
 };
 
 const mapStateToProps = ({cart, books}) => ({
