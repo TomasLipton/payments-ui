@@ -14,6 +14,11 @@ export default (state = initialState, action) => {
                 ...state,
                 items: state.items.filter(o => o.id !== action.payload)
             };
+        case 'UPDATE_CART_ITEM':
+            return {
+                ...state,
+                items: state.items.filter(o => o.id !== action.payload)
+            };
         default:
             return state;
     }

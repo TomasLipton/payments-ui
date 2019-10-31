@@ -1,66 +1,86 @@
 import React from 'react';
-import {Container, Header, Table, Rating} from "semantic-ui-react";
+import {Container, Header, Table, Input, Button, Icon, Segment, List} from "semantic-ui-react";
 import Menu from "../../containers/Menu";
 import Filter from "../../containers/Filter";
 
-const Checkout = () => (
-    <Container>
-        <Menu/>
-        <Filter/>
-        <Table celled padded>
-            <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell singleLine>Evidence Rating</Table.HeaderCell>
-                    <Table.HeaderCell>Effect</Table.HeaderCell>
-                    <Table.HeaderCell>Efficacy</Table.HeaderCell>
-                    <Table.HeaderCell>Consensus</Table.HeaderCell>
-                    <Table.HeaderCell>Comments</Table.HeaderCell>
-                </Table.Row>
-            </Table.Header>
+const Checkout = ({cartItems, removeFromCart}) => {
 
-            <Table.Body>
-                <Table.Row>
-                    <Table.Cell>
-                        <Header as='h2' textAlign='center'>
-                            A
-                        </Header>
-                    </Table.Cell>
-                    <Table.Cell singleLine>Power Output</Table.Cell>
-                    <Table.Cell>
-                        <Rating icon='star' defaultRating={3} maxRating={3} />
-                    </Table.Cell>
-                    <Table.Cell textAlign='right'>
-                        80% <br />
-                        <a href='#'>18 studies</a>
-                    </Table.Cell>
-                    <Table.Cell>
-                        Creatine supplementation is the reference compound for increasing
-                        muscular creatine levels; there is variability in this increase,
-                        however, with some nonresponders.
-                    </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                    <Table.Cell>
-                        <Header as='h2' textAlign='center'>
-                            A
-                        </Header>
-                    </Table.Cell>
-                    <Table.Cell singleLine>Weight</Table.Cell>
-                    <Table.Cell>
-                        <Rating icon='star' defaultRating={3} maxRating={3} />
-                    </Table.Cell>
-                    <Table.Cell textAlign='right'>
-                        100% <br />
-                        <a href='#'>65 studies</a>
-                    </Table.Cell>
-                    <Table.Cell>
-                        Creatine is the reference compound for power improvement, with numbers
-                        from one meta-analysis to assess potency
-                    </Table.Cell>
-                </Table.Row>
-            </Table.Body>
-        </Table>
-    </Container>
-);
+    const cartItem = cartItems.map(({id, title, price, count}, index) => {
+
+        const setHours = (event) => {
+            console.log(event.target.value)
+        };
+
+        return (
+            <Table.Row>
+                <Table.Cell>
+                    <Header as='h2' textAlign='center'>
+                        {index+1}
+                    </Header>
+                </Table.Cell>
+                <Table.Cell singleLine>{title}</Table.Cell>
+                <Table.Cell>
+                    {price}
+                </Table.Cell>
+                <Table.Cell textAlign='right'>
+                    <Input
+                        label={{basic: true, content: 'час'}}
+                        value={count}
+                        labelPosition='right'
+                        placeholder='Enter weight...'
+                        onClick={setHours}
+                    />
+                </Table.Cell>
+                <Table.Cell>
+                    {count * price}
+                </Table.Cell>
+                <Table.Cell>
+                    <Button onClick={removeFromCart.bind(this, id)} icon color="red">
+                        <Icon name={'cancel'}/>
+                    </Button>
+                </Table.Cell>
+            </Table.Row>
+        );
+    });
+
+    const TableSummary = () => {
+        return (
+            <Table celled padded>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell singleLine>#</Table.HeaderCell>
+                        <Table.HeaderCell>Название</Table.HeaderCell>
+                        <Table.HeaderCell>Стоимость часа</Table.HeaderCell>
+                        <Table.HeaderCell>Количестово часов</Table.HeaderCell>
+                        <Table.HeaderCell>Стоимость</Table.HeaderCell>
+                        <Table.HeaderCell>Удалить</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                {cartItem}
+                <Table.Body>
+                </Table.Body>
+            </Table>
+        );
+    }
+
+    const emptyCart = <Segment placeholder>
+        <Header icon>
+            <Icon name='tasks'/>
+            Карзина пуста. Добавьте товары к оплате
+        </Header>
+    </Segment>;
+
+    return (
+        <Container>
+            <Menu/>
+            <Filter/>
+            {
+                cartItem.length > 0
+                    ? <TableSummary/>
+                    : emptyCart
+            }
+        </Container>
+    )
+};
 
 export default Checkout;

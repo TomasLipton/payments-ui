@@ -1,11 +1,28 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as cartActions from '../actions/cart';
-import BookCard from "../components/BookCard/BookCard";
 import Checkout from "../components/Checkout/Checkout";
+import uniqBy from "lodash/uniqBy";
 
-const mapStateToProps = ({cart}, {id}) => ({
-    addedCount: cart.items.reduce((count, book) => count + (book.id === id ? 1 : 0), 0),
+const formatItems = (cart, books) => {
+    const items = uniqBy(cart.items, o => o.id);
+
+    return items.map((element, index, items) => {
+            return {
+                ...element,
+                count: cart.items.reduce(
+                    (count, book) => {
+                        return count + (book.id === element.id ? 1 : 0)
+                    }
+                    , 0
+                )
+            };
+        }
+    );
+};
+
+const mapStateToProps = ({cart, books}) => ({
+    cartItems: formatItems(cart, books),
 });
 
 const mapDispatchToProps = dispatch => ({
