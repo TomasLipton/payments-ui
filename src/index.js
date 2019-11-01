@@ -4,12 +4,12 @@ import App from './containers/App';
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
-import Checkout from "./containers/Checkout";
+import Checkout from "./containers/Checkout/Checkout";
 import store from "./store";
 
 ReactDOM.render(
     <Provider store={store()}>
-        <BrowserRouter>
+        <BrowserRouter  basename={'/payments-new/'}>
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/checkout" component={Checkout}/>
