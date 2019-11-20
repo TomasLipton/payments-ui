@@ -24,13 +24,14 @@ const TableSummary = ({cartItems, removeFromCart}) => {
                     {price}
                 </Table.Cell>
                 <Table.Cell textAlign='right'>
-                    <Input
-                        label={{basic: true, content: 'час'}}
-                        value={count}
-                        labelPosition='right'
-                        placeholder='Enter weight...'
-                        onClick={setHours}
-                    />
+                    {count}
+                    {/*<Input*/}
+                    {/*    label={{basic: true, content: 'час'}}*/}
+                    {/*    value={count}*/}
+                    {/*    labelPosition='right'*/}
+                    {/*    placeholder='Enter weight...'*/}
+                    {/*    onClick={setHours}*/}
+                    {/*/>*/}
                 </Table.Cell>
                 <Table.Cell>
                     {count * price}
