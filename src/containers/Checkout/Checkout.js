@@ -22,6 +22,7 @@ const formatItems = (cart, books) => {
 };
 
 const mapStateToProps = ({cart, books}) => ({
+    totalPrice: cart.items.reduce((total, book) => total + book.price, 0),
     cartItems: formatItems(cart, books),
 });
 

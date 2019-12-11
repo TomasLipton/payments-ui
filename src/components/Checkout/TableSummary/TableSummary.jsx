@@ -50,9 +50,9 @@ const TableSummary = ({cartItems, removeFromCart}) => {
             <Table.Row>
                 <Table.HeaderCell singleLine>#</Table.HeaderCell>
                 <Table.HeaderCell>Название</Table.HeaderCell>
-                <Table.HeaderCell>Стоимость часа</Table.HeaderCell>
-                <Table.HeaderCell>Количестово часов</Table.HeaderCell>
-                <Table.HeaderCell>Стоимость</Table.HeaderCell>
+                <Table.HeaderCell>Стоимость </Table.HeaderCell>
+                <Table.HeaderCell>Количестово </Table.HeaderCell>
+                <Table.HeaderCell>Стоимость всего</Table.HeaderCell>
                 <Table.HeaderCell>Удалить</Table.HeaderCell>
             </Table.Row>
         </Table.Header>

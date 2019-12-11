@@ -1,5 +1,5 @@
 const initialState = {
-    items: JSON.parse(localStorage.getItem('cart.items'))
+    items: JSON.parse(localStorage.getItem('cart.items')) || []
 };
 
 const addToCart = (state, action) => {

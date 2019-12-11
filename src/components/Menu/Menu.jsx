@@ -40,7 +40,7 @@ const MenuComponent = (prop) => {
                             : <Segment placeholder>
                                 <Header icon>
                                     <Icon name='tasks'/>
-                                    Карзина пуста. Добавьте товары к оплате
+                                    Корзина пуста. Добавьте товары к оплате
                                 </Header>
                             </Segment>
                     }

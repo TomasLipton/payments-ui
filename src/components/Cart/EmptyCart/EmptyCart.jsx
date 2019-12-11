@@ -4,7 +4,7 @@ import React from "react";
 const EmptyCart = () => <Segment placeholder>
     <Header icon>
         <Icon name='tasks'/>
-        Карзина пуста. Добавьте товары к оплате
+        Корзина пуста. Добавьте товары к оплате
     </Header>
 </Segment>;
 

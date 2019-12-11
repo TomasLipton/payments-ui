@@ -20,12 +20,12 @@ const submitHandler = () => {
 
 
 function Checkout(props) {
-    const {cartItems} = props;
+    const {cartItems, totalPrice} = props;
 
     return (
         <Container>
             <Menu/>
-            <Filter/>
+            {/*<Filter/>*/}
             {
                 cartItems.length > 0
                     ? <TableSummary/>
@@ -50,10 +50,27 @@ function Checkout(props) {
             >
                 {({handleChange, values, errors, handleBlur, touched, setStatus, isValid, initialErrors, dirty, ...props}) => {
                     return (
-                        <Form onSubmit={() => {
-                        }}>
+                        <Form
+                            method='post'
+                            action={'https://pay171.paysec.by/pay/order.cfm'}
+                            onSubmit={() => {
+                                localStorage.removeItem('cart.items')
+                            }}
+                        >
+
+                            <input type="" name="Merchant_ID" value={process.env.REACT_APP_MERCHANT_ID}/>
+                            <input type="" name="ordernumber" value={Date.now()}/>
+                            <input type="" name="orderamount" value={totalPrice}/>
+                            <input type="hidden" name="ordercomment" value="пример оплаты заказа"/>
+
+                            <input type="" name="firstname" value={values.name.split(' ')[0]} />
+                            <input type="" name="lastname" value={values.name.split(' ')[values.name.split(' ').length - 1]} />
+
+                            <input type="" name="URL_RETURN_OK" value={window.location.origin + '/postback/ok'} />
+                            <input type="" name="URL_RETURN_NO" value={window.location.origin + '/postback/no'} />
+
                             <Form.Field>
-                                <label>ФИО</label>
+                                <label>Имя и Фамилия</label>
                                 <Form.Input
                                     value={values.name}
                                     placeholder='Name'
@@ -110,6 +127,10 @@ function Checkout(props) {
                                 content='Перейти к оплате'
                                 type='submit'
                                 primary
+                                disabled={
+                                    !isValid ||
+                                    !dirty
+                                }
                             />
                         </Form>
                     )
