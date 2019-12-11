@@ -5,13 +5,14 @@ import {bindActionCreators} from "redux";
 import orderBy from "lodash/orderBy";
 
 const sortBy = (books, filterBy) => {
+    console.log(books, filterBy)
     switch (filterBy) {
         case 'price_high':
-            return orderBy(books, 'price', 'desc');
+            return orderBy(books, 'attributes.price', 'desc');
         case 'price_low':
-            return orderBy(books, 'price', 'asc');
+            return orderBy(books, 'attributes.price', 'asc');
         case 'author':
-            return orderBy(books, 'author', 'asc');
+            return orderBy(books, 'attributes.title', 'asc');
         default:
             return books;
     }
@@ -31,10 +32,12 @@ const searchBooks = (books, filterBy, searchQuery) => {
 };
 
 
-const mapStateToProps = ({books, filter}) => ({
-    books: books.items && searchBooks(books.items, filter.filterBy, filter.searchQuery),
-    isReady: books.isReady
-});
+const mapStateToProps = ({books, filter}) => {
+    return {
+        books: books.items && searchBooks(books.items, filter.filterBy, filter.searchQuery),
+        isReady: books.isReady
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     ...bindActionCreators(booksActions, dispatch),

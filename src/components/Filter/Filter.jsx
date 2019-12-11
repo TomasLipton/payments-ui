@@ -21,7 +21,7 @@ const Filter = ({setFilter, filterBy, searchQuery, setSearchQuery}) => (
         <Menu.Item
             active={filterBy === 'author'}
             onClick={setFilter.bind(this, 'author')}>
-            Автор
+            Название
         </Menu.Item>
         <Menu.Item>
             <Input

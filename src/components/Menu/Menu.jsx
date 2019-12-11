@@ -14,7 +14,7 @@ const MenuComponent = (prop) => {
 
     return (
         <Menu stackable>
-            <Menu.Item name="browse" as={Link} to={'/'}>Магазин книг</Menu.Item>
+            <Menu.Item name="browse" as={Link} to={'/'}>Магазин</Menu.Item>
 
             <Menu.Menu position="right">
                 <Menu.Item name="signup">
