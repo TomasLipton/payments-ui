@@ -30,27 +30,7 @@ class App extends Component {
                         !isReady
                             ? 'loading....'
                             : books.map(book => {
-                                if (book.attributes.category === 'psy') {
-                                    return <BookCard key={book.id} {...book.attributes} />;
-                                } else {
-                                    return [];
-                                }
-                            })
-                    }
-                </Card.Group>
-                <Header as='h2' dividing>
-                    Обучение
-                </Header>
-                <Card.Group doubling itemsPerRow={4}>
-                    {
-                        !isReady
-                            ? 'loading....'
-                            : books.map(book => {
-                                if (book.attributes.category !== 'psy') {
-                                    return <BookCard key={book.id} {...book.attributes} />;
-                                } else {
-                                    return [];
-                                }
+                                return <BookCard key={book.id} {...book.attributes} />;
                             })
                     }
                 </Card.Group>

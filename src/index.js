@@ -9,7 +9,7 @@ import store from "./store";
 
 ReactDOM.render(
     <Provider store={store()}>
-        <BrowserRouter  basename={'/payments-new/'}>
+        <BrowserRouter basename={'/payments-new/'}>
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/checkout" component={Checkout}/>
