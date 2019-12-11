@@ -49,13 +49,11 @@ function Checkout(props) {
                 validationSchema={validateFormSchema}
             >
                 {({handleChange, values, errors, handleBlur, touched, setStatus, isValid, initialErrors, dirty, ...props}) => {
-                    console.log(errors)
                     return (
                         <Form onSubmit={() => {
                         }}>
                             <Form.Field>
                                 <label>ФИО</label>
-
                                 <Form.Input
                                     value={values.name}
                                     placeholder='Name'
@@ -85,7 +83,7 @@ function Checkout(props) {
                                 <Form.Input
                                     value={values.phoneNumber}
                                     name={'phoneNumber'}
-                                    placeholder='Phone Number'
+                                    placeholder='Номер телефона'
                                     onChange={handleChange}
                                     error={errors.phoneNumber !== undefined
                                         ? {content: errors.phoneNumber, pointing: 'below'}
@@ -95,7 +93,7 @@ function Checkout(props) {
                             </Form.Field>
                             <Form.Field>
                                 <Form.Checkbox
-                                    value={values.agree1}
+                                    // value={values.agree1}
                                     name={'agree1'}
                                     id={'agree1'}
                                     type="checkbox"
