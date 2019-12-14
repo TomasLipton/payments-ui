@@ -22,6 +22,7 @@ const submitHandler = () => {
 function Checkout(props) {
     const {cartItems, totalPrice} = props;
 
+
     return (
         <Container>
             <Menu/>
@@ -110,7 +111,6 @@ function Checkout(props) {
                             </Form.Field>
                             <Form.Field>
                                 <Form.Checkbox
-                                    // value={values.agree1}
                                     name={'agree1'}
                                     id={'agree1'}
                                     type="checkbox"
