@@ -3,6 +3,24 @@ import 'semantic-ui-css/semantic.min.css'
 import {Button, Container, Header, Icon, Segment} from "semantic-ui-react";
 
 const PostbackError = (prop) => {
+    const url = new URL(window.location.href);
+    const ordernumber = url.searchParams.get("ordernumber");
+    const billnumber = url.searchParams.get("billnumber");
+
+    fetch(process.env.REACT_APP_API_ROOT + 'orders/' + ordernumber, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "ordernumber": ordernumber,
+            "billnumber": billnumber,
+            "status": 'canceled'
+        })
+    }).then(r => {
+    });
+
     return (
         <Container>
             <Segment placeholder>

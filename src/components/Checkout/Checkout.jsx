@@ -16,10 +16,11 @@ const initialValues = {
 class Checkout extends React.Component {
     constructor() {
         super();
-        this.state = { formDisabled: false };
-
+        this.state = {
+            formDisabled: false,
+            orderNumber: Date.now()
+        };
     }
-
 
     render() {
         const {cartItems, totalPrice} = this.props;
@@ -60,7 +61,7 @@ class Checkout extends React.Component {
                             >
 
                                 <input type="" name="Merchant_ID" value={process.env.REACT_APP_MERCHANT_ID}/>
-                                <input type="" name="ordernumber" value={Date.now()}/>
+                                <input type="" name="ordernumber" value={this.state.orderNumber}/>
                                 <input type="" name="orderamount" value={totalPrice}/>
                                 <input type="hidden" name="ordercomment" value="пример оплаты заказа"/>
 
@@ -146,6 +147,7 @@ class Checkout extends React.Component {
                                                 "email": values.email,
                                                 "phoneNumber": values.phoneNumber,
                                                 "total": totalPrice,
+                                                "orderNumber": this.state.orderNumber,
                                                 "orderItems": cartItems
                                             })
                                         }).then(r => {

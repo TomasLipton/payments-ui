@@ -1,12 +1,31 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import {Button, Container, Header, Icon, Segment} from "semantic-ui-react";
+import Menu from "../../containers/Menu";
 
 const PostbackSuccess = (prop) => {
 
+    const url = new URL(window.location.href);
+    const ordernumber = url.searchParams.get("ordernumber");
+    const billnumber = url.searchParams.get("billnumber");
+
+    fetch(process.env.REACT_APP_API_ROOT + 'orders/' + ordernumber, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "ordernumber": ordernumber,
+            "billnumber": billnumber,
+            "status": 'confirmed'
+        })
+    }).then(r => {
+    });
 
     return (
         <Container>
+            <Menu/>
             <Segment placeholder>
                 <Header icon>
                     <Icon name='chevron down' color='green'/>
