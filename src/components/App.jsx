@@ -11,7 +11,7 @@ import BookCard from "../containers/BookCard";
 class App extends Component {
     componentDidMount() {
         const {setBooks} = this.props;
-        axios.get('https://api.psychoanalitik.by/api/v1/products').then(({data}) => {
+        axios.get(process.env.REACT_APP_API_ROOT + 'products').then(({data}) => {
             setBooks(data);
         })
     }
