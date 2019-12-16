@@ -60,16 +60,16 @@ class Checkout extends React.Component {
                                 id="checkoutForm"
                             >
 
-                                <input type="" name="Merchant_ID" value={process.env.REACT_APP_MERCHANT_ID}/>
-                                <input type="" name="ordernumber" value={this.state.orderNumber}/>
-                                <input type="" name="orderamount" value={totalPrice}/>
+                                <input type="hidden" name="Merchant_ID" value={process.env.REACT_APP_MERCHANT_ID}/>
+                                <input type="hidden" name="ordernumber" value={this.state.orderNumber}/>
+                                <input type="hidden" name="orderamount" value={totalPrice}/>
                                 <input type="hidden" name="ordercomment" value="пример оплаты заказа"/>
 
-                                <input type="" name="firstname" value={values.name.split(' ')[0]}/>
-                                <input type="" name="lastname" value={values.name.split(' ')[values.name.split(' ').length - 1]}/>
+                                <input type="hidden" name="firstname" value={values.name.split(' ')[0]}/>
+                                <input type="hidden" name="lastname" value={values.name.split(' ')[values.name.split(' ').length - 1]}/>
 
-                                <input type="" name="URL_RETURN_OK" value={window.location.origin + '/postback/ok'}/>
-                                <input type="" name="URL_RETURN_NO" value={window.location.origin + '/postback/no'}/>
+                                <input type="hidden" name="URL_RETURN_OK" value={window.location.origin + '/postback/ok'}/>
+                                <input type="hidden" name="URL_RETURN_NO" value={window.location.origin + '/postback/no'}/>
 
                                 <Form.Field>
                                     <label>Имя и Фамилия</label>
