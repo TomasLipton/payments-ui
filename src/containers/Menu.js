@@ -4,15 +4,15 @@ import * as cartActions from '../actions/cart';
 import uniqBy from 'lodash/uniqBy';
 import MenuComponent from "../components/Menu/Menu";
 
-const formatItems = (cart, books) => {
+const formatItems = cart => {
     const items = uniqBy(cart.items, o => o.id);
 
     return items.map((element, index, items) => {
             return {
                 ...element,
                 count: cart.items.reduce(
-                    (count, book) => {
-                        return count + (book.id === element.id ? 1 : 0)
+                    (count, product) => {
+                        return count + (product.id === element.id ? 1 : 0)
                     }
                     , 0
                 )
@@ -21,10 +21,10 @@ const formatItems = (cart, books) => {
     );
 };
 
-const mapStateToProps = ({cart, books}) => ({
-    totalPrice: cart.items.reduce((total, book) => total + book.price, 0),
+const mapStateToProps = ({cart}) => ({
+    totalPrice: cart.items.reduce((total, product) => total + product.price, 0),
     count: cart.items.length,
-    items: formatItems(cart, books),
+    cartItems: formatItems(cart),
 });
 
 const mapDispatchToProps = dispatch => ({

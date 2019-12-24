@@ -6,18 +6,18 @@ import {Card, Container, Header} from 'semantic-ui-react'
 import './app.css'
 import Filter from "../containers/Filter";
 import Menu from "../containers/Menu";
-import BookCard from "../containers/BookCard";
+import ProductCard from "../containers/ProductCard";
 
 class App extends Component {
     componentDidMount() {
-        const {setBooks} = this.props;
+        const {setProducts} = this.props;
         axios.get(process.env.REACT_APP_API_ROOT + 'products').then(({data}) => {
-            setBooks(data);
+            setProducts(data);
         })
     }
 
     render() {
-        const {books, isReady} = this.props;
+        const {products, isReady} = this.props;
         return (
             <Container>
                 <Menu/>
@@ -29,8 +29,8 @@ class App extends Component {
                     {
                         !isReady
                             ? 'loading....'
-                            : books.map(book => {
-                                return <BookCard key={book.id} {...book.attributes} />;
+                            : products.map(product => {
+                                return <ProductCard key={product.id} {...product.attributes} />;
                             })
                     }
                 </Card.Group>

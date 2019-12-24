@@ -75,7 +75,7 @@ class Checkout extends React.Component {
                                     <label>Имя и Фамилия</label>
                                     <Form.Input
                                         value={values.name}
-                                        placeholder='Name'
+                                        placeholder='Имя Фамилия'
                                         name={'name'}
                                         onChange={handleChange}
                                         error={errors.name !== undefined
@@ -98,7 +98,7 @@ class Checkout extends React.Component {
                                     />
                                 </Form.Field>
                                 <Form.Field>
-                                    <label>Phone</label>
+                                    <label>Номер телефона</label>
                                     <Form.Input
                                         value={values.phoneNumber}
                                         name={'phoneNumber'}

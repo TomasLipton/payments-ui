@@ -2,8 +2,8 @@ import React from 'react';
 import {Card, Image, Icon, Button} from 'semantic-ui-react';
 import {declOfNum} from "../../helpers";
 
-const BookCard = book => {
-    const {title, author, price, picture, addToCart, addedCount} = book;
+const ProductCard = props => {
+    const {title, author, price, picture, addToCart, addedCount} = props;
     return (
         <Card>
             <div className="card-image">
@@ -21,7 +21,7 @@ const BookCard = book => {
                     {price}
                 </span>
             </Card.Content>
-            <Button onClick={addToCart.bind(this, book)}>{
+            <Button onClick={addToCart.bind(this, props)}>{
                 addedCount > 0
                     ? `${declOfNum(addedCount, ['Добавлен', 'Добавлено', 'Добавлено'])} ${addedCount} ${declOfNum(addedCount, ['час', 'часа', 'часов'])}`
                     : "Добавить в корзину"
@@ -31,4 +31,4 @@ const BookCard = book => {
     );
 };
 
-export default BookCard;
+export default ProductCard;

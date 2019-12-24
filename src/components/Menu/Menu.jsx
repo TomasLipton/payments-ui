@@ -4,13 +4,11 @@ import {Button, Header, Icon, List, Menu, Popup, Segment} from 'semantic-ui-reac
 import Cart from "../Cart/Cart";
 import {Link} from "react-router-dom";
 
-const MenuComponent = (prop) => {
-    const {totalPrice, count, items} = prop;
+const MenuComponent = ({totalPrice, count, cartItems, removeFromCart}) => {
 
-    const renderItems =
-        items.map(book => (
-            <Cart key={book.id} {...book} removeFromCart={prop.removeFromCart}/>
-        ));
+    const renderItems = cartItems.map(product => (
+        <Cart key={product.id} {...product} removeFromCart={removeFromCart}/>
+    ));
 
     return (
         <Menu stackable>

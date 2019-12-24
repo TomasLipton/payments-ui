@@ -4,16 +4,16 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 
 export default Yup.object().shape({
     email: Yup.string()
-        .email('Invalid email')
-        .required('Required'),
+        .email('Неправильный email')
+        .required('Это поле обязательно для заполнения'),
     name: Yup.string()
         .min(2)
         .max(20)
-        .required('Required'),
+        .required('Это поле обязательно для заполнения'),
     phoneNumber: Yup.string()
         .matches(phoneRegExp, 'Phone number is not valid')
-        .required('Required'),
+        .required('Это поле обязательно для заполнения'),
     agree1: Yup.bool()
         .oneOf([true], "Must choose one")
-        .required('Required'),
+        .required('Это поле обязательно для заполнения'),
 });

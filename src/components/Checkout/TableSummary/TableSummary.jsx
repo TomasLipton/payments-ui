@@ -62,15 +62,15 @@ const TableSummary = ({cartItems, removeFromCart}) => {
     </Table>)
 }
 
-const formatItems = (cart, books) => {
+const formatItems = cart => {
     const items = uniqBy(cart.items, o => o.id);
 
     return items.map((element, index, items) => {
             return {
                 ...element,
                 count: cart.items.reduce(
-                    (count, book) => {
-                        return count + (book.id === element.id ? 1 : 0)
+                    (count, product) => {
+                        return count + (product.id === element.id ? 1 : 0)
                     }
                     , 0
                 )
@@ -79,8 +79,8 @@ const formatItems = (cart, books) => {
     );
 };
 
-const mapStateToProps = ({cart, books}) => ({
-    cartItems: formatItems(cart, books),
+const mapStateToProps = ({cart}) => ({
+    cartItems: formatItems(cart),
 });
 
 const mapDispatchToProps = dispatch => ({
