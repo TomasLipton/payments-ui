@@ -12,7 +12,7 @@ const MenuComponent = ({totalPrice, count, cartItems, removeFromCart}) => {
 
     return (
         <Menu stackable>
-            <Menu.Item name="browse" as={Link} to={'/'}>Магазин</Menu.Item>
+            <Menu.Item name="browse" as={Link} to={'/'}>Оплата услуг</Menu.Item>
 
             <Menu.Menu position="right">
                 <Menu.Item name="signup">

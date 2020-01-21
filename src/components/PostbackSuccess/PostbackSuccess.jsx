@@ -9,7 +9,7 @@ const PostbackSuccess = (prop) => {
     const ordernumber = url.searchParams.get("ordernumber");
     const billnumber = url.searchParams.get("billnumber");
 
-    fetch(process.env.REACT_APP_API_ROOT + 'orders/' + ordernumber, {
+    fetch(process.env.REACT_APP_API_ROOT + 'assist/return-success/' + ordernumber, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
