@@ -1,5 +1,4 @@
 import React from 'react';
-import 'semantic-ui-css/semantic.min.css'
 import {Button, Container, Header, Icon, Segment} from "semantic-ui-react";
 
 const PostbackError = (prop) => {
