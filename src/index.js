@@ -11,7 +11,7 @@ import PostbackError from "./components/PostbackError/PostbackErroe";
 
 ReactDOM.render(
     <Provider store={store()}>
-        <BrowserRouter basename={'/payments-new/'}>
+        <BrowserRouter basename={'/payments/'}>
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/checkout" component={Checkout}/>
